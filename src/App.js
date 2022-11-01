@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import ContenedorTarjeta from './componentes/ContenedorTarjeta';
 import Navbar from './componentes/Navbar';
@@ -9,16 +9,24 @@ function App() {
 
 	const dispatch = useDispatch();
 
-	useEffect(() => {
-		dispatch(obtenerPokemones(20));
+	const [ listaPokemon, setListaPokemon ] = useState(20)
 
+	const siguientePagina = () => {
+		setListaPokemon(listaPokemon + 20)
+	}
+
+	const anteriorPagina = () => {
+		setListaPokemon(listaPokemon - 20)
+	}
+
+	useEffect(() => {
+		dispatch(obtenerPokemones(listaPokemon));
 	},[]);
 
     return (
 		<div>
 			<Navbar/>
-
-			<ContenedorTarjeta/>
+			<ContenedorTarjeta siguientePagina={siguientePagina} anteriorPagina={anteriorPagina} listaPokemon={listaPokemon}/>
 		</div>
     );
 }

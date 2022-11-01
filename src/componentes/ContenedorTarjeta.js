@@ -1,23 +1,27 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import Paginacion from './Paginacion';
 import Tarjeta from './Tarjeta';
 
-const ContenedorTarjeta = () => {
+const ContenedorTarjeta = (props) => {
 
 	const {
 		dataPokemon
 	} = useSelector(state => state.pokemonData);
 
     return (
-        <div className='grid md:grid-cols-5 sm:grid-cols-2 gap-5 m-5'>
+        <>
+            <div className='grid min-[630px]:grid-cols-3 min-[430px]:grid-cols-2 md:grid-cols-5 gap-5 m-5'>
 
             {
                 dataPokemon.length > 0
-                ? dataPokemon.map((pok) => <Tarjeta pokemon = {pok}/>)
+                ? dataPokemon.map((pok) => <Tarjeta key={pok.id} pokemon = {pok}/>)
                 : <p>Cargando...</p>
             }
 
-        </div>
+            </div>
+            <Paginacion  siguientePagina={props.siguientePagina} anteriorPagina={props.anteriorPagina} listaPokemon={props.listaPokemon}/>
+        </>
     )
 }
 

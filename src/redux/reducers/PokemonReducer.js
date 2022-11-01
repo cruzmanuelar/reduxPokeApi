@@ -1,12 +1,15 @@
 import { 
     FILTRAR_POKEMON_TIPO,
-    OBTENER_DATA_POKEMON
+    OBTENER_DATA_POKEMON,
+    OBTENER_DATA_POKEMON_ID,
+    OBTENER_DATA_PRINCIPAL_POKEMON_ID
 } from "../constants";
 
 const initialState = {
 
-    dataPokemon: [],
-    dataShiny: [4,5,7]
+    dataPokemon     : [],
+    pokemonId       : [],
+    dataPrincipalId : {},
 };
 
 export const PokemonReducer = ( state = initialState, action) => {
@@ -24,6 +27,18 @@ export const PokemonReducer = ( state = initialState, action) => {
             return {
                 ...state,
                 dataPokemon:action.payload
+            }
+
+        case OBTENER_DATA_POKEMON_ID:
+            return {
+                ...state,
+                pokemonId:action.payload
+            }
+
+        case OBTENER_DATA_PRINCIPAL_POKEMON_ID:
+            return {
+                ...state,
+                dataPrincipalId: action.payload
             }
 
         default:
