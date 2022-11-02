@@ -1,7 +1,5 @@
 
 export const capitalizarNombre = (nombre) => {
-    console.log(nombre)
-    // console.lo
     return nombre.charAt(0).toUpperCase() + nombre.slice(1);
 }
 

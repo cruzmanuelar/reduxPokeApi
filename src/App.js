@@ -9,7 +9,7 @@ function App() {
 
 	const dispatch = useDispatch();
 
-	const [ listaPokemon, setListaPokemon ] = useState(20)
+	const [ listaPokemon, setListaPokemon ] = useState(1)
 
 	const siguientePagina = () => {
 		setListaPokemon(listaPokemon + 20)

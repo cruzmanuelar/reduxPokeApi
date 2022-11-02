@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
-import { capitalizarNombre } from '../funciones/EspecieColorPokemon';
 import { obtenerPokemonId } from '../redux/actions/PokemonAction';
 import Navbar from './Navbar';
 
@@ -16,14 +15,13 @@ const Pokemon = () => {
         dataPrincipalId
 	} = useSelector(state => state.pokemonData);
 
-
-    console.log(pokemonId.types);
-    
     useEffect(()=> {
+
+        // console.log('le pasé' + id)
 
         dispatch(obtenerPokemonId(id));
 
-    },[])
+    },[pokemonId])
 
     return (
         <>

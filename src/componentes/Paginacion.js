@@ -6,27 +6,32 @@ const Paginacion = (props) => {
     
     const dispatch = useDispatch();
 
-    const siguientePokemon = () => {
-        
-        props.siguientePagina()
-        dispatch(obtenerPokemones(props.listaPokemon))
+    const siguientePokemon = async () => {
+
+        dispatch(obtenerPokemones(props.listaPokemon + 20))
+        await props.siguientePagina()
     }
     const anteriorPokemon = () => {
+        dispatch(obtenerPokemones(props.listaPokemon - 20))
         props.anteriorPagina()
-
     }
 
     return (
         <div className='flex justify-end m-5'>
-            <button
-                onClick={() => anteriorPokemon}
-                className='px-2 py-1 rounded-md text-white bg-red-500 mx-1'
-            >Anterior</button>
 
-            <button
-                onClick={() => siguientePokemon()}
-                className='px-2 py-1 rounded-md text-white bg-red-500 mx-1'
-            >Siguiente</button>
+            {props.listaPokemon > 1
+                && <button
+                    onClick={() => anteriorPokemon()}
+                    className='px-2 py-1 rounded-md text-white bg-red-500 mx-1'
+                >Anterior</button>
+            }
+
+            { props.listaPokemon < 1141
+                && <button
+                    onClick={() => siguientePokemon()}
+                    className='px-2 py-1 rounded-md text-white bg-red-500 mx-1'
+                >Siguiente</button>
+            }
         </div>
     )
 }
