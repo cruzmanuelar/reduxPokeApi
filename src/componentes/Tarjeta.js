@@ -2,13 +2,11 @@ import React from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { capitalizarNombre, especieColorPokemon } from '../funciones/EspecieColorPokemon';
-import { ObtenerDataPrincipalPokemonId } from '../redux/actions/PokemonAction';
 import AtributosPokemon from './AtributosPokemon';
 
 const Tarjeta = ({pokemon}) => {
     
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     
     let colorEspecie = especieColorPokemon(pokemon.types[0].type.name)
 
@@ -17,7 +15,7 @@ const Tarjeta = ({pokemon}) => {
     return (
 
         <div className={estiloTarjeta}>
-            <div className='bg-white rounded-lg'>
+            <div className='bg-white select-none rounded-lg'>
                 <p className='text-xl text-center font-medium'>{capitalizarNombre(pokemon.name)}</p>
             </div>
             <div className='my-3 flex justify-center'>
@@ -27,6 +25,7 @@ const Tarjeta = ({pokemon}) => {
                     }
                     className='h-28 hover:scale-105 ease-in duration-300 cursor-pointer'
                     src={pokemon.sprites.other.dream_world.front_default}
+                    alt={capitalizarNombre(pokemon.name)}
                 />
             </div>
             <AtributosPokemon pokemon={pokemon}/>

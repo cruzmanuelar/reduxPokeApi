@@ -22,14 +22,14 @@ const Paginacion = (props) => {
             {props.listaPokemon > 1
                 && <button
                     onClick={() => anteriorPokemon()}
-                    className='px-2 py-1 rounded-md text-white bg-red-500 mx-1'
+                    className='px-2 py-1 rounded-md font-medium text-white bg-red-600 mx-1'
                 >Anterior</button>
             }
 
             { props.listaPokemon < 1141
                 && <button
                     onClick={() => siguientePokemon()}
-                    className='px-2 py-1 rounded-md text-white bg-red-500 mx-1'
+                    className='px-2 py-1 rounded-md font-medium text-white bg-red-600 mx-1'
                 >Siguiente</button>
             }
         </div>

@@ -80,8 +80,6 @@ export const obtenerPokemonId = (id) => async (dispatch, getState) => {
 
     dataPokemon = await {...dataPokemon, imagen_home, imagen_home_shiny, imagen_dream_world}
 
-    console.log(dataPokemon)
-    
     const dataPokemonPrincipal = {
         nombre  : capitalizarNombre(dataPokemon.name),
         tipo    : capitalizarNombre(dataPokemon.types[0].type.name),
@@ -96,6 +94,14 @@ export const obtenerPokemonId = (id) => async (dispatch, getState) => {
     dispatch({
         type : OBTENER_DATA_PRINCIPAL_POKEMON_ID,
         payload: dataPokemonPrincipal
+    })
+
+    dispatch({
+        type: EXISTE_POKEMON_INPUT,
+        payload: {
+            existe  : false,
+            id      : null
+        }
     })
 
     dispatch({
